@@ -24,6 +24,14 @@
         padding: 0;
         transition: 0.3s;
       }
+      .inputBox:focus ~ .label,
+      .inputBox:valid ~ .label {
+        transform: translate(0, -25px);
+        font-size: 0.8rem;
+        z-index: 10;
+        border-left: 2px solid black;
+        border-right: 2px solid black;
+      }
     </style>
   </head>
   <body>
@@ -49,13 +57,51 @@
         class="w-full min-h-[calc(100vh-65px)] p-5 flex justify-center items-center"
       >
         <form
-          class="flex flex-col justify-center items-center gap-4 p-5 w-full sm:w-[350px] border rounded-md shadow-md"
+          class="flex flex-col justify-center items-center gap-4 p-5 w-full sm:w-[320px] border rounded-md shadow-md"
         >
           <div class="w-full">
             <h3 class="text-xl font-medium">Login</h3>
             <p class="my-1 text-gray-500 font-normal">
               Please login to user DayByDayByDay
             </p>
+          </div>
+          <div class="w-full relative">
+            <input
+              type="email"
+              class="w-full p-4 border inputBox bg-[rgba(0,0,0,0)] rounded-md"
+              required
+            />
+            <label class="absolute top-4 left-4 bg-white px-2 py-0 -z-10 label"
+              >Email Address*</label
+            >
+          </div>
+          <div class="w-full mt-2 relative">
+            <input
+              type="password"
+              class="w-full p-4 border bg-[rgba(0,0,0,0)] inputBox rounded-md"
+              required
+            />
+            <label class="absolute top-4 bg-white px-2 py-0 left-4 -z-10 label"
+              >Password*</label
+            >
+          </div>
+          <input
+            type="submit"
+            value="Login"
+            class="w-full text-gray-500 mt-2 text-[14px] bg-gray-200 p-2 rounded-md"
+          />
+          <div class="w-full">
+            <a href="#" class="text-sm underline text-gray-400 mb-2"
+              >Troubles login in? Reset your password</a
+            >
+          </div>
+          <div class="w-full border-t">
+            <p href="#" class="text-sm text-center my-3">No account yet?</p>
+            <button
+              class="w-full p-2 rounded-md cursor-pointer bg-slate-400 font-bold text-[14px] text-white"
+            >
+              Sign up for free
+            </button>
           </div>
         </form>
       </div>
