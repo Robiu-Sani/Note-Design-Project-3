@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -55,14 +55,9 @@
         <h1 class="text-2xl font-medium dark:text-white">Application Name</h1>
         <div class="flex justify-center dark:text-white items-center gap-2">
           <button
-            class="p-1 sm:w-[60px] relative rounded text-center hover:bg-gray-200 dark:hover:bg-gray-700"
+            onclick="changeThem()"
+            class="p-1 sm:w-[60px] rounded text-center hover:bg-gray-200 dark:hover:bg-gray-700"
           >
-            <input
-              type="button"
-              value=""
-              class="w-full h-full absolute top-0 left-0 cursor-pointer"
-            />
-            <!-- <div class="w-[100px] h-[100px]"></div> -->
             <i class="fa-solid fa-circle-half-stroke"></i>
           </button>
           <button
@@ -79,7 +74,7 @@
       </div>
       <!-- --------------- login  form body ----------------  -->
       <div
-        class="w-full min-h-screen pt-[55px] p-5 flex justify-center items-center dark:bg-gray-900 bg-white"
+        class="w-full min-h-[calc(100vh-55px)] mt-[55px] p-5 flex justify-center items-center dark:bg-gray-900 bg-white"
       >
         <form
           class="flex flex-col justify-center items-center gap-4 p-5 w-full sm:w-[320px] border rounded-md shadow-md dark:border-gray-700"
@@ -143,7 +138,7 @@
       <!-- --------------- Reset password  form body ----------------  -->
       <hr />
       <div
-        class="w-full min-h-screen pt-[55px] p-5 flex justify-center items-center dark:bg-gray-900 bg-white"
+        class="w-full min-h-[calc(100vh-55px)] mt-[55px] p-5 flex justify-center items-center dark:bg-gray-900 bg-white"
       >
         <form
           class="flex flex-col justify-center items-center gap-4 p-5 w-full sm:w-[320px] border rounded-md shadow-md dark:border-gray-700"
@@ -186,7 +181,7 @@
       <!-- --------------- signup  form body ----------------  -->
       <hr />
       <div
-        class="w-full min-h-screen pt-[55px] p-5 flex justify-center items-center dark:bg-gray-900 bg-white"
+        class="w-full min-h-[calc(100vh-55px)] mt-[55px] p-5 flex justify-center items-center dark:bg-gray-900 bg-white"
       >
         <form
           class="flex flex-col justify-center items-center gap-4 p-5 w-full sm:w-[320px] border rounded-md shadow-md dark:border-gray-700"
@@ -256,6 +251,18 @@
       window.addEventListener("load", () => {
         setThem();
       });
+
+      function changeThem() {
+        const them = localStorage.getItem("theme")
+          ? localStorage.getItem("theme")
+          : "light";
+        if (them === "light") {
+          localStorage.setItem("theme", "dark");
+        } else {
+          localStorage.setItem("theme", "light");
+        }
+        setThem();
+      }
 
       function setThem() {
         const them = localStorage.getItem("theme")
