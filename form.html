@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="light">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,11 +11,6 @@
     />
 
     <!-- --------------tailwindcss link --------------------- -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/daisyui@4.6.0/dist/full.min.css"
-      rel="stylesheet"
-      type="text/css"
-    />
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- --------------------------- tailwind custom color maker --------------------------- -->
     <script>
@@ -60,17 +55,23 @@
         <h1 class="text-2xl font-medium dark:text-white">Application Name</h1>
         <div class="flex justify-center dark:text-white items-center gap-2">
           <button
-            class="p-1 sm:w-[60px] rounded text-center hover:bg-gray-200 dark:hover:bg-gray-700"
+            class="p-1 sm:w-[60px] relative rounded text-center hover:bg-gray-200 dark:hover:bg-gray-700"
           >
+            <input
+              type="button"
+              value=""
+              class="w-full h-full absolute top-0 left-0 cursor-pointer"
+            />
+            <!-- <div class="w-[100px] h-[100px]"></div> -->
             <i class="fa-solid fa-circle-half-stroke"></i>
           </button>
           <button
-            class="p-1 sm:w-[60px] rounded text-center hover:bg-gray-200 dark:hover:bg-gray-700"
+            class="p-1 sm:w-[60px] relative rounded text-center hover:bg-gray-200 dark:hover:bg-gray-700"
           >
             <i class="fa-solid fa-language"></i>
           </button>
           <button
-            class="p-1 sm:w-[60px] rounded text-center hover:bg-gray-200 dark:hover:bg-gray-700"
+            class="p-1 sm:w-[60px] relative rounded text-center hover:bg-gray-200 dark:hover:bg-gray-700"
           >
             <i class="fa-solid fa-ellipsis-vertical"></i>
           </button>
@@ -249,5 +250,20 @@
         </form>
       </div>
     </section>
+
+    <!-- -------------------them js functionlity -------------------  -->
+    <script>
+      window.addEventListener("load", () => {
+        setThem();
+      });
+
+      function setThem() {
+        const them = localStorage.getItem("theme")
+          ? localStorage.getItem("theme")
+          : "light";
+        const applyThem = document.querySelector("html");
+        applyThem.setAttribute("class", them);
+      }
+    </script>
   </body>
 </html>
