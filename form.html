@@ -43,6 +43,10 @@
         border-left: 2px solid black;
         border-right: 2px solid black;
       }
+      .callPopup:focus ~ .popupBox {
+        width: 120px;
+        height: auto;
+      }
     </style>
   </head>
   <body>
@@ -64,11 +68,37 @@
             class="p-1 sm:w-[60px] relative rounded text-center hover:bg-gray-200 dark:hover:bg-gray-700"
           >
             <i class="fa-solid fa-language"></i>
+            <input
+              type="button"
+              class="w-full h-full absolute callPopup top-0 cursor-pointer left-0"
+            />
+            <div
+              class="w-[0px] h-[0px] flex flex-col popupBox rounded-md bg-white dark:bg-gray-900 shadow-md absolute top-9 right-1 overflow-hidden"
+            >
+              <span class="p-3 w-full hover:bg-[#b3cedb3d]">English</span>
+              <span class="p-3 w-full hover:bg-[#b3cedb3d]">German</span>
+            </div>
           </button>
           <button
             class="p-1 sm:w-[60px] relative rounded text-center hover:bg-gray-200 dark:hover:bg-gray-700"
           >
             <i class="fa-solid fa-ellipsis-vertical"></i>
+            <input
+              type="button"
+              class="w-full h-full absolute callPopup top-0 cursor-pointer left-0"
+            />
+            <div
+              class="w-[0px] h-[0px] flex flex-col popupBox rounded-md bg-white dark:bg-gray-900 shadow-md absolute top-9 right-1 overflow-hidden"
+            >
+              <span
+                class="p-3 w-full hover:bg-[#b3cedb3d] flex justify-center items-center gap-3"
+                ><i class="fa-solid fa-circle-info"></i>Info</span
+              >
+              <span
+                class="p-3 w-full hover:bg-[#b3cedb3d] flex justify-center items-center gap-3"
+                ><i class="fa-solid fa-circle-question"></i>Help</span
+              >
+            </div>
           </button>
         </div>
       </div>
