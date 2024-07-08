@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -53,7 +53,9 @@
           </button>
 
           <!-- --------------- date work is here ---------------  -->
-          <div class="flex justify-center items-center gap-[1px]">
+          <div
+            class="flex h-[50px] callDate absolute top-8 sm:static justify-center items-center gap-[1px]"
+          >
             <button
               id="prev-date"
               class="w-[50px] h-[50px] rounded-sm flex justify-center items-center bg-gray-200 dark:bg-[#596987]"
@@ -62,7 +64,7 @@
             </button>
             <span
               id="date-display"
-              class="text-lg font-medium h-[50px] rounded-sm flex justify-center items-center bg-gray-200 dark:bg-[#596987] px-2"
+              class="text-lg font-medium w-[170px] h-[50px] rounded-sm flex justify-center items-center bg-gray-200 dark:bg-[#596987] px-2"
               >Tu 07/09/2024</span
             >
             <button
@@ -72,6 +74,7 @@
               <i class="fas fa-arrow-right"></i>
             </button>
           </div>
+
           <!-- ------ save button -------------  -->
           <button
             class="w-[50px] h-[50px] rounded-sm flex justify-center items-center bg-gray-200 dark:bg-[#596987]"
@@ -79,6 +82,7 @@
             <i class="fa-solid fa-floppy-disk"></i>
           </button>
           <!-- ---------------- list and eye button --------------  -->
+
           <div
             class="w-[100px] rounded-sm overflow-hidden flex justify-center items-center"
           >
@@ -93,6 +97,7 @@
               <i class="fa-solid fa-eye"></i>
             </button>
           </div>
+
           <!-- ------- last info icon button ----------------  -->
           <button
             id="next-date"
@@ -104,7 +109,7 @@
         <!-- ----------------- setting button -----------------  -->
         <div class="flex justify-center dark:text-white items-center gap-2">
           <button
-            class="p-1 sm:w-[60px] relative rounded text-center hover:bg-gray-200 dark:hover:bg-gray-700"
+            class="w-[50px] h-[50px] rounded-sm flex justify-center items-center bg-gray-200 dark:bg-[#596987] sm:w-[60px] relative"
           >
             <i class="fa-solid fa-ellipsis-vertical"></i>
             <input
@@ -137,9 +142,11 @@
       </div>
       <!-- -------------------- main body ----------------  -->
       <div
-        class="w-full h-[calc(100vh-60px)] flex justify-center items-center flex-col"
+        class="w-full min-h-screen flex justify-center items-center flex-col"
       >
-        <p class="text-lg text-gray-600 mb-4 mt-10">
+        <p
+          class="text-xl font-bold text-center dark:text-white text-gray-600 mb-4 mt-10"
+        >
           No note added on the selected date yet
         </p>
         <button class="px-4 py-2 bg-blue-500 text-white rounded">
