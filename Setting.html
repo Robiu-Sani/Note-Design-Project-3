@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Note Application</title>
+    <!-- --------------- font awesome icon cdn ------------------  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+
+    <!-- --------------tailwindcss link --------------------- -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- --------------------------- tailwind custom color maker --------------------------- -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+          },
+        },
+        darkMode: "class",
+      };
+    </script>
+    <!-- ---------------- custom css -----------------  -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        transition: 0.3s;
+      }
+      .noneScroll::-webkit-scrollbar {
+        display: none !important;
+      }
+      .callPopup:focus ~ .popupBox {
+        width: 180px;
+        height: auto;
+      }
+      .tab-content {
+        display: none;
+      }
+      input[name="tabs"]:checked + label {
+        border-left: 7px solid rgba(128, 128, 128, 0.212);
+      }
+      input[name="tabs"]:checked + label + .tab-content {
+        display: block;
+      }
+      label {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body class="bg-white dark:bg-gray-900 text-black dark:text-white">
+    <!-- -------------------------- setting section is here --------------------  -->
+    <section>
+      <div
+        class="w-full min-h-screen fixed z-[9999] flex justify-center items-center px-4 py-8 bg-white dark:bg-gray-900 text-black dark:text-white"
+      >
+        <div
+          class="max-h-full relative border w-[1000px] bg-white dark:bg-gray-800 m-3 rounded-md overflow-hidden shadow-md"
+        >
+          <div
+            class="w-full flex justify-between items-center gap-3 p-3 dark:border-gray-700 border-b"
+          >
+            <h3 class="text-xl">Setting</h3>
+            <i class="fa-solid fa-xmark"></i>
+          </div>
+
+          <div class="w-full h-[450px]">
+            <div class="grid grid-cols-3 h-full">
+              <div class="w-full border-r dark:border-gray-700">
+                <input
+                  type="radio"
+                  name="tabs"
+                  id="tab-general"
+                  class="hidden"
+                  checked
+                />
+                <label
+                  for="tab-general"
+                  class="w-full p-2 sm:p-4 border-b cursor-pointer callPopup dark:border-gray-700 text-left text-xl block"
+                  >General</label
+                >
+
+                <input
+                  type="radio"
+                  name="tabs"
+                  id="tab-template"
+                  class="hidden"
+                />
+                <label
+                  for="tab-template"
+                  class="w-full p-2 sm:p-4 border-b cursor-pointer callPopup dark:border-gray-700 text-left text-xl block"
+                  >Template</label
+                >
+
+                <input
+                  type="radio"
+                  name="tabs"
+                  id="tab-hotkeys"
+                  class="hidden"
+                />
+                <label
+                  for="tab-hotkeys"
+                  class="w-full p-2 sm:p-4 border-b cursor-pointer callPopup dark:border-gray-700 text-left text-xl block"
+                  >Hotkeys</label
+                >
+
+                <input
+                  type="radio"
+                  name="tabs"
+                  id="tab-account"
+                  class="hidden"
+                />
+                <label
+                  for="tab-account"
+                  class="w-full p-2 sm:p-4 mb-4 border-b cursor-pointer callPopup dark:border-gray-700 text-left text-xl block"
+                  >Account</label
+                >
+              </div>
+              <div class="w-full col-span-2 overflow-y-auto noneScroll">
+                <!-- first-tab-contant  -->
+                <div id="content-general" class="tab-content">
+                  <div class="w-full">
+                    <div
+                      class="w-full p-2 bg-gray-200 dark:bg-gray-700 flex justify-start gap-3 items-center"
+                    >
+                      <i class="fa-solid fa-language"></i>
+                      <span>Language</span>
+                    </div>
+                    <div class="w-full p-5">
+                      <button
+                        class="min-w-[180px] h-[50px] rounded-sm flex px-4 justify-start items-center bg-gray-200 dark:bg-[#596987] sm:w-[60px] relative"
+                      >
+                        Language
+                        <input
+                          type="button"
+                          class="w-full h-full absolute callPopup top-0 cursor-pointer left-0"
+                        />
+                        <div
+                          class="w-[0px] h-[0px] flex flex-col popupBox rounded-sm bg-white dark:bg-gray-900 shadow-md absolute top-[55px] right-0 overflow-hidden"
+                        >
+                          <span class="p-3 w-full hover:bg-[#b3cedb3d]"
+                            >English</span
+                          >
+                          <span class="p-3 w-full hover:bg-[#b3cedb3d]"
+                            >German</span
+                          >
+                        </div>
+                      </button>
+                    </div>
+                    <div
+                      class="w-full p-2 bg-gray-200 dark:bg-gray-700 flex justify-start gap-3 items-center"
+                    >
+                      <i class="fa-solid fa-circle-half-stroke"></i>
+                      <span>Them</span>
+                    </div>
+                    <div class="w-full p-5">
+                      <!-- -----them btton -------------  -->
+                      <button
+                        onclick="changeThem()"
+                        class="p-1 flex justify-start bg-gray-200 items-center gap-2 p-3 w-[180px] px-4 rounded-sm hover:bg-gray-200 dark:bg-gray-600 dark:hover:bg-gray-700"
+                      >
+                        <i class="fa-solid fa-circle-half-stroke"></i>
+                        <p>Change</p>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ======= secend tab --------------  -->
+                <div id="content-template" class="tab-content">
+                  <div
+                    class="w-full p-2 bg-gray-200 dark:bg-gray-700 flex justify-start gap-3 items-center"
+                  >
+                    <i class="fa-solid fa-language"></i>
+                    <span>Template</span>
+                  </div>
+                  <div class="w-full p-3">
+                    <form class="w-full">
+                      <textarea
+                        required
+                        class="w-full h-[250px] rounded-sm border-gray-500 p-2 bg-[rgba(0,0,0,0)] outline-0 border"
+                      >
+# New Note {{LLLL}} dfhls
+                    </textarea
+                      >
+                      <div class="w-full flex justify-between mt-2">
+                        <span></span>
+                        <input
+                          type="submit"
+                          value="Save"
+                          class="bg-blue-500 cursor-pointer px-5 rounded-sm p-1"
+                        />
+                      </div>
+                    </form>
+                  </div>
+                </div>
+
+                <!-- ------------------ thired contant ----------------------  -->
+                <div id="content-hotkeys" class="tab-content">
+                  <div
+                    class="w-full p-2 bg-gray-200 dark:bg-gray-700 flex justify-start gap-3 items-center"
+                  >
+                    <i class="fa-solid fa-keyboard"></i>
+                    <span>Hotkeys</span>
+                  </div>
+                  <div class="w-full p-3">
+                    <div class="w-full grid grid-cols-1 md:grid-cols-2"></div>
+                  </div>
+                </div>
+
+                <div id="content-account" class="tab-content">
+                  <div
+                    class="w-full p-2 bg-gray-700 flex justify-start gap-3 items-center"
+                  >
+                    <i class="fa-solid fa-user"></i>
+                    <span>Account</span>
+                  </div>
+                  <div class="w-full p-6">
+                    Account settings content goes here.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------------- tab js --------------------  -->
+    <script>
+      const tabs = document.querySelectorAll('input[name="tabs"]');
+      const contents = document.querySelectorAll(".tab-content");
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("change", () => {
+          contents.forEach((content) => {
+            content.style.display = "none";
+          });
+
+          const selectedContent = document.querySelector(
+            `#content-${tab.id.split("-")[1]}`
+          );
+          selectedContent.style.display = "block";
+        });
+      });
+
+      // Display the content of the checked tab by default
+      document
+        .querySelector('input[name="tabs"]:checked')
+        .dispatchEvent(new Event("change"));
+    </script>
+
+    <!-- -------------------them js functionlity -------------------  -->
+    <script>
+      window.addEventListener("load", () => {
+        setThem();
+      });
+
+      function changeThem() {
+        const them = localStorage.getItem("theme")
+          ? localStorage.getItem("theme")
+          : "light";
+        if (them === "light") {
+          localStorage.setItem("theme", "dark");
+        } else {
+          localStorage.setItem("theme", "light");
+        }
+        setThem();
+      }
+
+      function setThem() {
+        const them = localStorage.getItem("theme")
+          ? localStorage.getItem("theme")
+          : "light";
+        const applyThem = document.querySelector("html");
+        applyThem.setAttribute("class", them);
+      }
+    </script>
+  </body>
+</html>
