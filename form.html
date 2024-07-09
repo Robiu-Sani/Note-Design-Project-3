@@ -33,15 +33,18 @@
         transition: 0.3s;
       }
       .inputBox:valid {
-        border: 2px solid black;
+        border: 1px solid rgb(70, 70, 70);
+      }
+      .inputBox:focus {
+        outline: 1px;
       }
       .inputBox:focus ~ .label,
       .inputBox:valid ~ .label {
         transform: translate(0, -25px);
         font-size: 0.8rem;
         z-index: 10;
-        border-left: 2px solid black;
-        border-right: 2px solid black;
+        border-left: 1px solid rgb(70, 70, 70);
+        border-right: 1px solid rgb(70, 70, 70);
       }
       .callPopup:focus ~ .popupBox {
         width: 120px;

@@ -32,10 +32,30 @@
         padding: 0;
         transition: 0.3s;
       }
+
+      /* ------------ form style  start from here --------------- */
+
+      .inputBox:valid {
+        border: 1px solid rgb(70, 70, 70);
+      }
+      .inputBox:focus {
+        outline: 1px;
+      }
+      .inputBox:focus ~ .label,
+      .inputBox:valid ~ .label {
+        transform: translate(0, -25px);
+        font-size: 0.8rem;
+        z-index: 10;
+        border-left: 1px solid rgb(70, 70, 70);
+        border-right: 1px solid rgb(70, 70, 70);
+      }
+
+
+      /* ------------ tab style  start from here --------------- */
       .noneScroll::-webkit-scrollbar {
         display: none !important;
       }
-      .callPopup:focus ~ .popupBox {
+      .callPopup2:focus ~ .popupBox {
         width: 180px;
         height: auto;
       }
@@ -81,7 +101,7 @@
                 />
                 <label
                   for="tab-general"
-                  class="w-full p-2 sm:p-4 border-b cursor-pointer callPopup dark:border-gray-700 text-left text-xl block"
+                  class="w-full p-2 sm:p-4 border-b cursor-pointer callPopup2 dark:border-gray-700 text-left text-xl block"
                   >General</label
                 >
 
@@ -93,7 +113,7 @@
                 />
                 <label
                   for="tab-template"
-                  class="w-full p-2 sm:p-4 border-b cursor-pointer callPopup dark:border-gray-700 text-left text-xl block"
+                  class="w-full p-2 sm:p-4 border-b cursor-pointer callPopup2 dark:border-gray-700 text-left text-xl block"
                   >Template</label
                 >
 
@@ -105,7 +125,7 @@
                 />
                 <label
                   for="tab-hotkeys"
-                  class="w-full p-2 sm:p-4 border-b cursor-pointer callPopup dark:border-gray-700 text-left text-xl block"
+                  class="w-full p-2 sm:p-4 border-b cursor-pointer callPopup2 dark:border-gray-700 text-left text-xl block"
                   >Hotkeys</label
                 >
 
@@ -117,7 +137,7 @@
                 />
                 <label
                   for="tab-account"
-                  class="w-full p-2 sm:p-4 mb-4 border-b cursor-pointer callPopup dark:border-gray-700 text-left text-xl block"
+                  class="w-full p-2 sm:p-4 mb-4 border-b cursor-pointer callPopup2 dark:border-gray-700 text-left text-xl block"
                   >Account</label
                 >
               </div>
@@ -138,7 +158,7 @@
                         Language
                         <input
                           type="button"
-                          class="w-full h-full absolute callPopup top-0 cursor-pointer left-0"
+                          class="w-full h-full absolute callPopup2 top-0 cursor-pointer left-0"
                         />
                         <div
                           class="w-[0px] h-[0px] flex flex-col popupBox rounded-sm bg-white dark:bg-gray-900 shadow-md absolute top-[55px] right-0 overflow-hidden"
@@ -209,21 +229,217 @@
                     <span>Hotkeys</span>
                   </div>
                   <div class="w-full p-3">
-                    <div class="w-full grid grid-cols-1 md:grid-cols-2"></div>
+                    <div class="w-full grid grid-cols-2">
+                      <!-- ---------- title --------------  -->
+                      <p
+                        class="bg-gray-200 dark:bg-gray-700 text-center w-full p-1 font-bold border border-gray-600"
+                      >
+                        Action
+                      </p>
+                      <p
+                        class="bg-gray-200 dark:bg-gray-700 text-center w-full p-1 font-bold border border-gray-600"
+                      >
+                        Hotkey
+                      </p>
+
+                      <!-- --------------- key words -----------------  -->
+                      <p class="border border-gray-600 p-1 w-full">
+                        Save current note
+                      </p>
+                      <p class="border border-gray-600 p-1 w-full">
+                        command + s
+                      </p>
+                      <!-- -------- col 2 --------------  -->
+                      <p class="border border-gray-600 p-1 w-full">
+                        Save current note
+                      </p>
+                      <p class="border border-gray-600 p-1 w-full">
+                        command + s
+                      </p>
+                      <!-- -------- col 3 --------------  -->
+                      <p class="border border-gray-600 p-1 w-full">
+                        Save current note
+                      </p>
+                      <p class="border border-gray-600 p-1 w-full">
+                        command + s
+                      </p>
+                      <!-- -------- col 4 --------------  -->
+                      <p class="border border-gray-600 p-1 w-full">
+                        Save current note
+                      </p>
+                      <p class="border border-gray-600 p-1 w-full">
+                        command + s
+                      </p>
+                      <!-- -------- col 5 --------------  -->
+                      <p class="border border-gray-600 p-1 w-full">
+                        Save current note
+                      </p>
+                      <p class="border border-gray-600 p-1 w-full">
+                        command + s
+                      </p>
+                      <!-- -------- col 6 --------------  -->
+                      <p class="border border-gray-600 p-1 w-full">
+                        Save current note
+                      </p>
+                      <p class="border border-gray-600 p-1 w-full">
+                        command + s
+                      </p>
+                    </div>
                   </div>
                 </div>
 
+                <!-- ------------------- forth tab contant -----------------  -->
                 <div id="content-account" class="tab-content">
-                  <div
+                  <!-- changeing email  -->
+                  <div class="w-full">
+                    <div
                     class="w-full p-2 bg-gray-700 flex justify-start gap-3 items-center"
                   >
-                    <i class="fa-solid fa-user"></i>
-                    <span>Account</span>
+                  <i class="fa-solid fa-envelope"></i>
+                    <span>Change email</span>
                   </div>
                   <div class="w-full p-6">
-                    Account settings content goes here.
+                    <!-- ---- change start form here ---------  -->
+                    <form
+                    class="flex flex-col justify-start items-start gap-4  w-full sm:w-[300px]  dark:border-gray-700"
+                  >
+                  <div class="w-full relative">
+                    <input
+                      type="text"
+                      class="w-full p-4 border dark:border-white dark:outline-white inputBox bg-[rgba(0,0,0,0)] rounded-md dark:bg-[rgb(17 24 39)] dark:text-white dark:border-gray-600"
+                      required
+                      placeholder="Email Address*"
+                    />
+                    <label
+                      class="absolute top-4 left-4 bg-white dark:bg-gray-800 dark:!border-white px-2 dark:!bg-[rgb(17 24 39)] py-0 -z-10 label dark:text-white"
+                    >
+                      Email Address*
+                    </label>
                   </div>
+                    <div class="w-full mt-2 relative">
+                      <input
+                        type="password"
+                        class="w-full p-4 border inputBox bg-[rgba(0,0,0,0)] dark:border-white dark:outline-white rounded-md dark:bg-[rgb(17 24 39)] dark:text-white dark:border-gray-600"
+                        required
+                        placeholder="Password*"
+                      />
+                      <label
+                        class="absolute top-4 left-4 bg-white dark:bg-gray-800 dark:!border-white px-2 dark:!bg-[rgb(17 24 39)] py-0 -z-10 label dark:text-white"
+                        >Password*</label
+                      >
+                    </div>
+                    
+                    <input
+                      type="submit"
+                      value="change email"
+                      class=" p-2 rounded-md cursor-pointer bg-slate-400 font-bold text-[14px] text-white"
+                    />
+          
+                    
+                  </form>
+                    <!-- ---- change end form here ---------  -->
+                  </div>
+                  </div>
+                  <!-- changing password  -->
+                  <div class="w-full">
+                    <div
+                    class="w-full p-2 bg-gray-700 flex justify-start gap-3 items-center"
+                  >
+                  <i class="fa-solid fa-key"></i>
+                    <span>Change password</span>
+                  </div>
+                  <div class="w-full p-6">
+                    <!-- ---- change start form here ---------  -->
+                    <form
+                    class="flex flex-col justify-start items-start gap-4  w-full sm:w-[300px]  dark:border-gray-700"
+                  >
+                  <div class="w-full relative">
+                    <input
+                      type="password"
+                      class="w-full p-4 border inputBox bg-[rgba(0,0,0,0)] dark:border-white dark:outline-white rounded-md dark:bg-[rgb(17 24 39)] dark:text-white dark:border-gray-600"
+                      required
+                      placeholder="Current Password*"
+                    />
+                    <label
+                      class="absolute top-4 left-4 bg-white dark:bg-gray-800 dark:!border-white px-2 dark:!bg-[rgb(17 24 39)] py-0 -z-10 label dark:text-white"
+                      >Current Password*</label
+                    >
+                  </div>
+                    <div class="w-full mt-2 relative">
+                      <input
+                        type="password"
+                        class="w-full p-4 border inputBox bg-[rgba(0,0,0,0)] dark:border-white dark:outline-white rounded-md dark:bg-[rgb(17 24 39)] dark:text-white dark:border-gray-600"
+                        required
+                        placeholder="New Password*"
+                      />
+                      <label
+                        class="absolute top-4 left-4 bg-white dark:bg-gray-800 dark:!border-white px-2 dark:!bg-[rgb(17 24 39)] py-0 -z-10 label dark:text-white"
+                        >New Password*</label
+                      >
+                    </div>
+                    <div class="w-full mt-2 relative">
+                      <input
+                        type="password"
+                        class="w-full p-4 border inputBox bg-[rgba(0,0,0,0)] dark:border-white dark:outline-white rounded-md dark:bg-[rgb(17 24 39)] dark:text-white dark:border-gray-600"
+                        required
+                        placeholder="Repeat New Password*"
+                      />
+                      <label
+                        class="absolute top-4 left-4 bg-white dark:bg-gray-800 dark:!border-white px-2 dark:!bg-[rgb(17 24 39)] py-0 -z-10 label dark:text-white"
+                        >Repeat New Password*</label
+                      >
+                    </div>
+                    
+                    <input
+                      type="submit"
+                      value="change password"
+                      class=" p-2 rounded-md cursor-pointer bg-slate-400 font-bold text-[14px] text-white"
+                    />
+          
+                    
+                  </form>
+                    <!-- ---- change end form here ---------  -->
+                  </div>
+                  </div>
+                <!-- Delete account -   -->
+                <div class="w-full">
+                  <div
+                  class="w-full p-2 bg-gray-700 flex justify-start gap-3 items-center"
+                >
+                  <i class="fa-solid fa-user"></i>
+                  <span>Delete account</span>
                 </div>
+                <div class="w-full p-6">
+                  <!-- ---- change start form here ---------  -->
+                  <form
+                  class="flex flex-col justify-start items-start gap-4  w-full sm:w-[300px]  dark:border-gray-700"
+                >
+                  <div class="w-full relative">
+                    <input
+                      type="password"
+                      class="w-full p-4 border inputBox bg-[rgba(0,0,0,0)] dark:border-white dark:outline-white rounded-md dark:bg-[rgb(17 24 39)] dark:text-white dark:border-gray-600"
+                      required
+                      placeholder="Password*"
+                    />
+                    <label
+                      class="absolute top-4 left-4 bg-white dark:bg-gray-800 dark:!border-white px-2 dark:!bg-[rgb(17 24 39)] py-0 -z-10 label dark:text-white"
+                      >Password*</label
+                    >
+                  </div>
+                  
+                  <input
+                    type="submit"
+                    value="Delete account"
+                    class=" p-2 rounded-md cursor-pointer bg-slate-400 font-bold text-[14px] text-white"
+                  />
+        
+                  
+                </form>
+                  <!-- ---- change end form here ---------  -->
+                </div>
+                </div>
+
+                <!-- ----  -->
               </div>
             </div>
           </div>
