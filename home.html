@@ -42,7 +42,7 @@
     </style>
   </head>
   <body>
-    <!-- --------------------- Login form start from here ---------------------------- -->
+    <!-- --------------------- main body start from here ---------------------------- -->
     <section class="w-full min-h-screen relative dark:bg-gray-900 bg-white">
       <!-- ------------nav bar ---------------  -->
       <div
@@ -148,6 +148,7 @@
           </button>
         </div>
       </div>
+
       <!-- -------------------- main body ----------------  -->
       <div
         class="w-full min-h-screen flex justify-center items-center flex-col"
@@ -168,7 +169,7 @@
     <section>
       <div class="w-full min-h-screen p-1">
         <textarea
-          class="w-full mt-[55px] bg-[rgba(0,0,0,0)] border-0 noneScroll outline-0 p-2 text-normal min-h-[calc(100vh-65px)]"
+          class="w-full mt-[55px] bg-[rgba(0,0,0,0)] border-0 noneScroll outline-0 p-2 text-black dark:text-white text-normal min-h-[calc(100vh-65px)]"
         >
 # New Note {{LLLL}} dfhls</textarea
         >
@@ -195,7 +196,7 @@
           };
           dateDisplay.textContent = currentDate
             .toLocaleDateString("en-US", options)
-            .replace(",", "");
+            .replace(",", " ");
         }
 
         // Event listeners for buttons

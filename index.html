@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -32,9 +32,10 @@
         padding: 0;
         transition: 0.3s;
       }
-
-      /* ------------ form style  start from here --------------- */
-
+      .noneScroll::-webkit-scrollbar {
+        display: none !important;
+      }
+      /* ----------- form related style -------------  */
       .inputBox:valid {
         border: 1px solid rgb(70, 70, 70);
       }
@@ -49,11 +50,11 @@
         border-left: 1px solid rgb(70, 70, 70);
         border-right: 1px solid rgb(70, 70, 70);
       }
-
-      /* ------------ tab style  start from here --------------- */
-      .noneScroll::-webkit-scrollbar {
-        display: none !important;
+      .callPopup:focus ~ .popupBox {
+        width: 120px;
+        height: auto;
       }
+      /* -------------- tab related style ---------------------  */
       .callPopup2:focus ~ .popupBox {
         width: 180px;
         height: auto;
@@ -72,11 +73,368 @@
       }
     </style>
   </head>
-  <body class="bg-white dark:bg-gray-900 text-black dark:text-white">
-    <!-- -------------------------- setting section is here --------------------  -->
-    <section>
+  <body>
+    <!-- --------------------- Login form start from here ---------------------------- -->
+    <section class="w-full min-h-screen relative dark:bg-gray-900 bg-white">
+      <!-- ------------nav bar ---------------  -->
       <div
-        class="w-full min-h-screen fixed z-[9999] flex justify-center items-center px-4 py-8 bg-white dark:bg-gray-900 text-black dark:text-white"
+        class="w-full fixed top-0 z-[1000] px-5 p-4 dark:bg-gray-800 bg-gray-50 flex justify-between items-center"
+      >
+        <h1 class="text-2xl font-medium dark:text-white">Application Name</h1>
+        <div class="flex justify-center dark:text-white items-center gap-2">
+          <button
+            onclick="changeThem()"
+            class="p-1 sm:w-[60px] rounded text-center hover:bg-gray-200 dark:hover:bg-gray-700"
+          >
+            <i class="fa-solid fa-circle-half-stroke"></i>
+          </button>
+          <button
+            class="p-1 sm:w-[60px] relative rounded text-center hover:bg-gray-200 dark:hover:bg-gray-700"
+          >
+            <i class="fa-solid fa-language"></i>
+            <input
+              type="button"
+              class="w-full h-full absolute callPopup top-0 cursor-pointer left-0"
+            />
+            <div
+              class="w-[0px] h-[0px] flex flex-col popupBox rounded-md bg-white dark:bg-gray-900 shadow-md absolute top-9 right-1 overflow-hidden"
+            >
+              <span class="p-3 w-full hover:bg-[#b3cedb3d]">English</span>
+              <span class="p-3 w-full hover:bg-[#b3cedb3d]">German</span>
+            </div>
+          </button>
+          <button
+            class="p-1 sm:w-[60px] relative rounded text-center hover:bg-gray-200 dark:hover:bg-gray-700"
+          >
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+            <input
+              type="button"
+              class="w-full h-full absolute callPopup top-0 cursor-pointer left-0"
+            />
+            <div
+              class="w-[0px] h-[0px] flex flex-col popupBox rounded-md bg-white dark:bg-gray-900 shadow-md absolute top-9 right-1 overflow-hidden"
+            >
+              <span
+                class="p-3 w-full hover:bg-[#b3cedb3d] flex justify-center items-center gap-3"
+                ><i class="fa-solid fa-circle-info"></i>Info</span
+              >
+              <span
+                class="p-3 w-full hover:bg-[#b3cedb3d] flex justify-center items-center gap-3"
+                ><i class="fa-solid fa-circle-question"></i>Help</span
+              >
+            </div>
+          </button>
+        </div>
+      </div>
+      <!-- --------------- login  form body ----------------  -->
+      <div
+        class="w-full min-h-[calc(100vh-55px)] mt-[55px] p-5 flex justify-center items-center dark:bg-gray-900 bg-white"
+      >
+        <form
+          class="flex flex-col justify-center items-center gap-4 p-5 w-full sm:w-[320px] border rounded-md shadow-md dark:border-gray-700"
+        >
+          <div class="w-full">
+            <h3 class="text-xl font-medium dark:text-white">Login</h3>
+            <p class="my-1 text-gray-500 font-normal dark:text-gray-400">
+              Please login to use DayByDayByDay
+            </p>
+          </div>
+          <div class="w-full relative">
+            <input
+              type="text"
+              class="w-full p-4 border dark:border-white dark:outline-white inputBox bg-[rgba(0,0,0,0)] rounded-md dark:bg-[rgb(17 24 39)] dark:text-white dark:border-gray-600"
+              required
+              placeholder="Email Address*"
+            />
+            <label
+              class="absolute top-4 left-4 bg-white dark:bg-gray-800 dark:!border-white px-2 dark:!bg-[rgb(17 24 39)] py-0 -z-10 label dark:text-white"
+            >
+              Email Address*
+            </label>
+          </div>
+          <div class="w-full mt-2 relative">
+            <input
+              type="password"
+              class="w-full p-4 border inputBox bg-[rgba(0,0,0,0)] dark:border-white dark:outline-white rounded-md dark:bg-[rgb(17 24 39)] dark:text-white dark:border-gray-600"
+              required
+              placeholder="Password*"
+            />
+            <label
+              class="absolute top-4 left-4 bg-white dark:bg-gray-800 dark:!border-white px-2 dark:!bg-[rgb(17 24 39)] py-0 -z-10 label dark:text-white"
+              >Password*</label
+            >
+          </div>
+          <input
+            type="submit"
+            value="Login"
+            class="w-full text-gray-500 mt-2 cursor-pointer text-[14px] bg-gray-200 dark:bg-gray-800 dark:text-white p-2 rounded-md"
+          />
+          <div class="w-full">
+            <a
+              href="#"
+              class="text-sm underline text-gray-400 mb-2 dark:text-gray-500"
+              >Troubles logging in? Reset your password</a
+            >
+          </div>
+          <div class="w-full border-t dark:border-gray-700">
+            <p href="#" class="text-sm text-center my-3 dark:text-gray-400">
+              No account yet?
+            </p>
+            <button
+              class="w-full p-2 rounded-md cursor-pointer bg-slate-400 font-bold text-[14px] text-white"
+            >
+              Sign up for free
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- --------------- Reset password  form body ----------------  -->
+      <hr />
+      <div
+        class="w-full min-h-[calc(100vh-55px)] mt-[55px] p-5 flex justify-center items-center dark:bg-gray-900 bg-white"
+      >
+        <form
+          class="flex flex-col justify-center items-center gap-4 p-5 w-full sm:w-[320px] border rounded-md shadow-md dark:border-gray-700"
+        >
+          <div class="w-full">
+            <h3 class="text-xl font-medium dark:text-white">Reset password</h3>
+            <p class="my-1 text-gray-500 font-normal dark:text-gray-400">
+              Please enter your email address. We will send you an email with
+              further instruction.
+            </p>
+          </div>
+          <div class="w-full relative">
+            <input
+              type="text"
+              class="w-full p-4 border dark:border-white dark:outline-white inputBox bg-[rgba(0,0,0,0)] rounded-md dark:bg-[rgb(17 24 39)] dark:text-white dark:border-gray-600"
+              required
+              placeholder="Email Address*"
+            />
+            <label
+              class="absolute top-4 left-4 bg-white dark:bg-gray-800 dark:!border-white px-2 dark:!bg-[rgb(17 24 39)] py-0 -z-10 label dark:text-white"
+            >
+              Email Address*
+            </label>
+          </div>
+          <input
+            type="submit"
+            value="Send password reset email"
+            class="w-full text-gray-500 mt-2 cursor-pointer text-[14px] bg-gray-200 dark:bg-gray-800 dark:text-white p-2 rounded-md"
+          />
+          <div class="w-full border-t dark:border-gray-700">
+            <button
+              class="w-full p-2 rounded-md cursor-pointer bg-slate-400 font-bold text-[14px] text-white"
+            >
+              Go back to login
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- --------------- signup  form body ----------------  -->
+      <hr />
+      <div
+        class="w-full min-h-[calc(100vh-55px)] mt-[55px] p-5 flex justify-center items-center dark:bg-gray-900 bg-white"
+      >
+        <form
+          class="flex flex-col justify-center items-center gap-4 p-5 w-full sm:w-[320px] border rounded-md shadow-md dark:border-gray-700"
+        >
+          <div class="w-full">
+            <h3 class="text-xl font-medium dark:text-white">Sign up</h3>
+            <p class="my-1 text-gray-500 font-normal dark:text-gray-400">
+              Sign up for free
+            </p>
+          </div>
+          <div class="w-full relative">
+            <input
+              type="text"
+              class="w-full p-4 border dark:border-white dark:outline-white inputBox bg-[rgba(0,0,0,0)] rounded-md dark:bg-[rgb(17 24 39)] dark:text-white dark:border-gray-600"
+              required
+              placeholder="Email Address*"
+            />
+            <label
+              class="absolute top-4 left-4 bg-white dark:bg-gray-800 dark:!border-white px-2 dark:!bg-[rgb(17 24 39)] py-0 -z-10 label dark:text-white"
+            >
+              Email Address*
+            </label>
+          </div>
+          <div class="w-full mt-2 relative">
+            <input
+              type="password"
+              class="w-full p-4 border inputBox bg-[rgba(0,0,0,0)] dark:border-white dark:outline-white rounded-md dark:bg-[rgb(17 24 39)] dark:text-white dark:border-gray-600"
+              required
+              placeholder="Password*"
+            />
+            <label
+              class="absolute top-4 left-4 bg-white dark:bg-gray-800 dark:!border-white px-2 dark:!bg-[rgb(17 24 39)] py-0 -z-10 label dark:text-white"
+              >Password*</label
+            >
+          </div>
+          <div class="w-full mt-2 relative">
+            <input
+              type="password"
+              class="w-full p-4 border inputBox bg-[rgba(0,0,0,0)] dark:border-white dark:outline-white rounded-md dark:bg-[rgb(17 24 39)] dark:text-white dark:border-gray-600"
+              required
+              placeholder="Repeat password*"
+            />
+            <label
+              class="absolute top-4 left-4 bg-white dark:bg-gray-800 dark:!border-white px-2 dark:!bg-[rgb(17 24 39)] py-0 -z-10 label dark:text-white"
+              >Repeat password*</label
+            >
+          </div>
+          <input
+            type="submit"
+            value="Sign up"
+            class="w-full text-gray-500 mt-2 cursor-pointer text-[14px] bg-gray-200 dark:bg-gray-800 dark:text-white p-2 rounded-md"
+          />
+
+          <div class="w-full border-t dark:border-gray-700">
+            <button
+              class="w-full p-2 rounded-md cursor-pointer bg-slate-400 font-bold text-[14px] text-white"
+            >
+              Go back to login
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ---------------------- main body content start from here ---------------  -->
+    <section class="w-full min-h-screen relative dark:bg-gray-900 bg-white">
+      <!-- ------------nav bar ---------------  -->
+
+      <div
+        class="w-full sticky top-0 z-[1000] px-1 sm:px-5 p-1 dark:bg-gray-800 bg-gray-50 flex justify-between items-center"
+      >
+        <div class="w-full overflow-x-auto noneScroll">
+          <div class="flex justify-start items-center min-w-[530px] gap-1">
+            <button
+              class="w-[50px] h-[50px] rounded-sm flex justify-center items-center bg-gray-200 dark:bg-[#596987]"
+            >
+              <i class="fa-regular fa-calendar"></i>
+            </button>
+
+            <!-- --------------- date work is here ---------------  -->
+            <div
+              class="flex h-[50px] callDate justify-center items-center gap-[1px]"
+            >
+              <button
+                id="prev-date"
+                class="w-[50px] h-[50px] rounded-sm flex justify-center items-center bg-gray-200 dark:bg-[#596987]"
+              >
+                <i class="fas fa-arrow-left"></i>
+              </button>
+              <span
+                id="date-display"
+                class="text-lg font-medium max-w-[170px] h-[50px] rounded-sm flex justify-center items-center bg-gray-200 dark:bg-[#596987] px-2"
+                >Tu 07/09/2024</span
+              >
+              <button
+                id="next-date"
+                class="w-[50px] h-[50px] rounded-sm flex justify-center items-center bg-gray-200 dark:bg-[#596987]"
+              >
+                <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+
+            <!-- ------ save button -------------  -->
+            <button
+              class="w-[50px] h-[50px] rounded-sm flex justify-center items-center bg-gray-200 dark:bg-[#596987]"
+            >
+              <i class="fa-solid fa-floppy-disk"></i>
+            </button>
+            <!-- ---------------- list and eye button --------------  -->
+
+            <div
+              class="w-[100px] rounded-sm overflow-hidden flex justify-center items-center"
+            >
+              <button
+                class="w-[50px] h-[50px] flex justify-center items-center bg-gray-200 dark:bg-[#596987]"
+              >
+                <i class="fa-solid fa-bars"></i>
+              </button>
+              <button
+                class="w-[50px] h-[50px] flex justify-center items-center bg-white dark:bg-[#969ca9]"
+              >
+                <i class="fa-solid fa-eye"></i>
+              </button>
+            </div>
+
+            <!-- ------- last info icon button ----------------  -->
+            <button
+              id="next-date"
+              class="w-[50px] h-[50px] rounded-sm flex justify-center items-center bg-gray-200 dark:bg-[#596987]"
+            >
+              <i class="fa-solid fa-circle-info"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- ----------------- setting button -----------------  -->
+        <div
+          class="flex min-w-[55px] justify-end dark:text-white items-center gap-2"
+        >
+          <button
+            class="min-w-[50px] h-[50px] rounded-sm flex justify-center items-center bg-gray-200 dark:bg-[#596987] sm:w-[60px] relative"
+          >
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+            <input
+              type="button"
+              class="w-full h-full absolute callPopup top-0 cursor-pointer left-0"
+            />
+            <div
+              class="w-[0px] h-[0px] flex flex-col popupBox rounded-md bg-white dark:bg-gray-900 shadow-md absolute top-[55px] right-1 overflow-hidden"
+            >
+              <span
+                class="p-3 w-full hover:bg-[#b3cedb3d] flex justify-start items-center gap-3"
+                ><i class="fa-solid fa-gear"></i>Settings</span
+              >
+              <span
+                class="p-3 w-full hover:bg-[#b3cedb3d] flex justify-start items-center gap-3"
+                ><i class="fa-solid fa-circle-info"></i>Info</span
+              >
+              <span
+                class="p-3 w-full hover:bg-[#b3cedb3d] flex justify-start items-center gap-3"
+                ><i class="fa-solid fa-circle-question"></i>Help</span
+              >
+              <span
+                class="p-3 w-full hover:bg-[#b3cedb3d] flex justify-start items-center gap-3"
+                ><i class="fa-solid fa-arrow-right-from-bracket"></i
+                >Logout</span
+              >
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- -------------------- main body ----------------  -->
+      <div
+        class="w-full min-h-screen flex justify-center items-center flex-col"
+      >
+        <p
+          class="text-xl font-bold text-center dark:text-white px-4 text-gray-600 mb-4 mt-10"
+        >
+          No note added on the selected date yet
+        </p>
+        <button class="px-4 py-2 bg-blue-500 text-white rounded">
+          Add Note
+        </button>
+      </div>
+
+      <!-- -------------------- Text Area body ----------------  -->
+      <div class="w-full min-h-screen p-1 bg-white dark:bg-gray-900">
+        <textarea
+          class="w-full mt-[55px] bg-[rgba(0,0,0,0)] text-black dark:text-white border-0 noneScroll outline-0 p-2 text-normal min-h-[calc(100vh-65px)]"
+        >
+# New Note {{LLLL}} dfhls</textarea
+        >
+      </div>
+
+      <!-- -------------------------- setting body is here --------------------  -->
+      <!-- --------- in this div need to add this two class - fixed z-[9999] top-0 left-0  ----- / -->
+      <div
+        class="w-full min-h-screen flex justify-center items-center px-4 py-8 bg-white dark:bg-gray-900 text-black dark:text-white"
       >
         <div
           class="max-h-full relative border w-[1000px] bg-white dark:bg-gray-800 m-3 rounded-md overflow-hidden shadow-md"
@@ -457,29 +815,7 @@
       </div>
     </section>
 
-    <!-- ---------------- tab js --------------------  -->
-    <script>
-      const tabs = document.querySelectorAll('input[name="tabs"]');
-      const contents = document.querySelectorAll(".tab-content");
-
-      tabs.forEach((tab) => {
-        tab.addEventListener("change", () => {
-          contents.forEach((content) => {
-            content.style.display = "none";
-          });
-
-          const selectedContent = document.querySelector(
-            `#content-${tab.id.split("-")[1]}`
-          );
-          selectedContent.style.display = "block";
-        });
-      });
-
-      // Display the content of the checked tab by default
-      document
-        .querySelector('input[name="tabs"]:checked')
-        .dispatchEvent(new Event("change"));
-    </script>
+    <section></section>
 
     <!-- -------------------them js functionlity -------------------  -->
     <script>
@@ -506,6 +842,69 @@
         const applyThem = document.querySelector("html");
         applyThem.setAttribute("class", them);
       }
+    </script>
+
+    <!-- -------------------date picker js functionlity -------------------  -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const dateDisplay = document.getElementById("date-display");
+        const prevDateButton = document.getElementById("prev-date");
+        const nextDateButton = document.getElementById("next-date");
+
+        // Initialize date to the displayed date
+        let currentDate = new Date(2024, 6, 9); // July 9, 2024 (months are 0-indexed)
+
+        // Function to update the date display
+        function updateDateDisplay() {
+          const options = {
+            weekday: "short",
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+          };
+          dateDisplay.textContent = currentDate
+            .toLocaleDateString("en-US", options)
+            .replace(",", " ");
+        }
+
+        // Event listeners for buttons
+        prevDateButton.addEventListener("click", function () {
+          currentDate.setDate(currentDate.getDate() - 1);
+          updateDateDisplay();
+        });
+
+        nextDateButton.addEventListener("click", function () {
+          currentDate.setDate(currentDate.getDate() + 1);
+          updateDateDisplay();
+        });
+
+        // Initial update of date display
+        updateDateDisplay();
+      });
+    </script>
+
+    <!-- ---------------- tab js --------------------  -->
+    <script>
+      const tabs = document.querySelectorAll('input[name="tabs"]');
+      const contents = document.querySelectorAll(".tab-content");
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("change", () => {
+          contents.forEach((content) => {
+            content.style.display = "none";
+          });
+
+          const selectedContent = document.querySelector(
+            `#content-${tab.id.split("-")[1]}`
+          );
+          selectedContent.style.display = "block";
+        });
+      });
+
+      // Display the content of the checked tab by default
+      document
+        .querySelector('input[name="tabs"]:checked')
+        .dispatchEvent(new Event("change"));
     </script>
   </body>
 </html>
