@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Note Application</title>
+    <!-- --------------- font awesome icon cdn ------------------  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <!-- --------------flowbite css link --------------------- -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css"
+      rel="stylesheet"
+    />
+    <!-- --------------tailwindcss link --------------------- -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- --------------------------- tailwind custom color maker --------------------------- -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+          },
+        },
+        darkMode: "class",
+      };
+    </script>
+    <!-- ---------------- custom css -----------------  -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        transition: 0.3s;
+      }
+      .callPopup:focus ~ .popupBox {
+        width: 120px;
+        height: auto;
+      }
+      .callPopup2:focus ~ .popupBox {
+        width: 180px;
+        height: auto;
+      }
+      .noneScroll::-webkit-scrollbar {
+        display: none !important;
+      }
+      .inputBox:valid {
+        border: 1px solid rgb(70, 70, 70);
+      }
+      .inputBox:focus {
+        outline: 1px;
+      }
+      .inputBox:focus ~ .label,
+      .inputBox:valid ~ .label {
+        transform: translate(0, -25px);
+        font-size: 0.8rem;
+        z-index: 10;
+        border-left: 1px solid rgb(70, 70, 70);
+        border-right: 1px solid rgb(70, 70, 70);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ------------------ ------------------------  -->
+    <div class="w-full h-[calc(100vh-55px)] bg-white dark:bg-gray-800">
+      <!-- ------------nav bar ---------------  -->
+      <div
+        class="w-full shadow-md border-b border-gray-200 dark:border-gray-700 fixed top-0 z-[1000] px-1 sm:px-5 p-1 dark:bg-gray-800 bg-gray-50 flex justify-between items-center"
+      >
+        <div class="w-full overflow-x-auto noneScroll">
+          <div class="flex justify-start items-center min-w-[530px] gap-1">
+            <button
+              class="w-[50px] h-[50px] rounded-sm flex justify-center items-center bg-gray-200 dark:bg-[#596987]"
+            >
+              <i class="fa-regular fa-calendar"></i>
+            </button>
+            <!-- --------------- date work is here ---------------  -->
+            <div
+              class="flex h-[50px] callDate justify-center items-center gap-[1px]"
+            >
+              <button
+                id="prev-date"
+                class="w-[50px] h-[50px] rounded-sm flex justify-center items-center bg-gray-200 dark:bg-[#596987]"
+              >
+                <i class="fas fa-arrow-left"></i>
+              </button>
+              <span
+                id="date-display"
+                class="text-lg font-medium max-w-[170px] h-[50px] rounded-sm flex justify-center items-center bg-gray-200 dark:bg-[#596987] px-2"
+              >
+                Tu 07/09/2024
+              </span>
+              <button
+                id="next-date-1"
+                class="w-[50px] h-[50px] rounded-sm flex justify-center items-center bg-gray-200 dark:bg-[#596987]"
+              >
+                <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+            <!-- ------ save button -------------  -->
+            <button
+              class="w-[50px] h-[50px] rounded-sm flex justify-center items-center bg-gray-200 dark:bg-[#596987]"
+            >
+              <i class="fa-solid fa-floppy-disk"></i>
+            </button>
+            <!-- ---------------- list and eye button --------------  -->
+            <div
+              class="w-[100px] rounded-sm overflow-hidden flex justify-center items-center"
+            >
+              <button
+                class="w-[50px] h-[50px] flex justify-center items-center bg-gray-200 dark:bg-[#596987]"
+              >
+                <i class="fa-solid fa-bars"></i>
+              </button>
+              <button
+                class="w-[50px] h-[50px] flex justify-center items-center bg-white dark:bg-[#969ca9]"
+              >
+                <i class="fa-solid fa-eye"></i>
+              </button>
+            </div>
+            <!-- ------- last info icon button ----------------  -->
+            <button
+              id="info-button"
+              class="w-[50px] h-[50px] rounded-sm flex justify-center items-center bg-gray-200 dark:bg-[#596987]"
+            >
+              <i class="fa-solid fa-circle-info"></i>
+            </button>
+          </div>
+        </div>
+        <!-- ----------------- setting button -----------------  -->
+        <div
+          class="flex min-w-[55px] justify-end dark:text-white items-center gap-2"
+        >
+          <button
+            class="min-w-[50px] h-[50px] rounded-sm flex justify-center items-center bg-gray-200 dark:bg-[#596987] sm:w-[60px] relative"
+          >
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+            <input
+              type="button"
+              class="w-full h-full absolute callPopup top-0 cursor-pointer left-0"
+            />
+            <div
+              class="w-[0px] h-[0px] flex flex-col popupBox rounded-md bg-white dark:bg-gray-900 shadow-md absolute top-[55px] right-1 overflow-hidden"
+            >
+              <span
+                class="p-3 w-full hover:bg-[#b3cedb3d] flex justify-start items-center gap-3"
+              >
+                <i class="fa-solid fa-gear"></i>Settings
+              </span>
+              <span
+                class="p-3 w-full hover:bg-[#b3cedb3d] flex justify-start items-center gap-3"
+              >
+                <i class="fa-solid fa-circle-info"></i>Info
+              </span>
+              <span
+                class="p-3 w-full hover:bg-[#b3cedb3d] flex justify-start items-center gap-3"
+              >
+                <i class="fa-solid fa-circle-question"></i>Help
+              </span>
+              <span
+                class="p-3 w-full hover:bg-[#b3cedb3d] flex justify-start items-center gap-3"
+              >
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>Logout
+              </span>
+            </div>
+          </button>
+        </div>
+      </div>
+      <!-- -------------- nav end ----------------  -->
+      <div
+        class="w-full mt-[55px] max-h-[calc(100vh-65px)] bg-white dark:bg-gray-800"
+      >
+        <div
+          class="w-full flex justify-between items-center gap-3 p-3 dark:border-gray-700 border-b"
+        >
+          <h3
+            class="text-xl text-black dark:text-white flex justify-center items-center gap-3"
+          >
+            <i class="fa-solid fa-sliders"></i>Setting
+          </h3>
+          <!-- <i class="fa-solid fa-xmark"></i> -->
+        </div>
+        <div
+          class="w-full max-h-[calc(100vh-110px)] flex flex-col md:flex-row border-b border-gray-200 dark:border-gray-700"
+        >
+          <!-- ----------- side nav ----------------  -->
+          <div class="max-h-full w-full md:w-[250px]">
+            <ul
+              class="-mb-px text-md font-medium"
+              id="default-tab"
+              data-tabs-toggle="#default-tab-content"
+              role="tablist"
+            >
+              <li
+                class="border-b border-gray-200 dark:border-gray-700"
+                role="presentation"
+              >
+                <button
+                  class="inline-block w-full text-center sm:text-left p-4 border-b-2"
+                  id="profile-tab"
+                  data-tabs-target="#profile"
+                  type="button"
+                  role="tab"
+                  aria-controls="profile"
+                  aria-selected="false"
+                >
+                  General
+                </button>
+              </li>
+              <li
+                class="border-b border-gray-200 dark:border-gray-700"
+                role="presentation"
+              >
+                <button
+                  class="inline-block w-full text-center sm:text-left p-4 border-b-2"
+                  id="dashboard-tab"
+                  data-tabs-target="#dashboard"
+                  type="button"
+                  role="tab"
+                  aria-controls="dashboard"
+                  aria-selected="false"
+                >
+                  Template
+                </button>
+              </li>
+              <li
+                class="border-b border-gray-200 dark:border-gray-700"
+                role="presentation"
+              >
+                <button
+                  class="inline-block w-full text-center sm:text-left p-4 border-b-2"
+                  id="settings-tab"
+                  data-tabs-target="#settings"
+                  type="button"
+                  role="tab"
+                  aria-controls="settings"
+                  aria-selected="false"
+                >
+                  Settings
+                </button>
+              </li>
+              <li
+                class="border-b border-gray-200 dark:border-gray-700"
+                role="presentation"
+              >
+                <button
+                  class="inline-block w-full text-center sm:text-left p-4 border-b-2"
+                  id="contacts-tab"
+                  data-tabs-target="#contacts"
+                  type="button"
+                  role="tab"
+                  aria-controls="contacts"
+                  aria-selected="false"
+                >
+                  Hotkeys
+                </button>
+              </li>
+            </ul>
+          </div>
+          <!-- ----------- content -----------------  -->
+          <div
+            id="default-tab-content"
+            class="overflow-y-scroll text-black dark:text-white max-h-full border-gray-200 dark:border-gray-700 border-t sm:border-t-0 border-l-0 sm:border-l noneScroll w-full md:w-[calc(100%-250px)]"
+          >
+            <!-- ------------------ first-content -------------  -->
+            <div
+              class="hidden rounded-lg bg-gray-50 dark:bg-gray-800"
+              id="profile"
+              role="tabpanel"
+              aria-labelledby="profile-tab"
+            >
+              <div class="w-full">
+                <div
+                  class="w-full p-2 bg-gray-200 dark:bg-gray-700 flex justify-start gap-3 items-center"
+                >
+                  <i class="fa-solid fa-language"></i>
+                  <span>Language</span>
+                </div>
+                <div class="w-full p-5">
+                  <button
+                    class="min-w-[180px] h-[50px] rounded-sm flex px-4 justify-start items-center bg-gray-200 dark:bg-[#596987] sm:w-[60px] relative"
+                  >
+                    Language
+                    <input
+                      type="button"
+                      class="w-full h-full absolute callPopup2 top-0 cursor-pointer left-0"
+                    />
+                    <div
+                      class="w-[0px] h-[0px] flex flex-col popupBox rounded-sm bg-white dark:bg-gray-900 shadow-md absolute top-[55px] right-0 overflow-hidden"
+                    >
+                      <span class="p-3 w-full hover:bg-[#b3cedb3d]"
+                        >English</span
+                      >
+                      <span class="p-3 w-full hover:bg-[#b3cedb3d]"
+                        >German</span
+                      >
+                    </div>
+                  </button>
+                </div>
+                <div
+                  class="w-full p-2 bg-gray-200 dark:bg-gray-700 flex justify-start gap-3 items-center"
+                >
+                  <i class="fa-solid fa-circle-half-stroke"></i>
+                  <span>Theme</span>
+                </div>
+                <div class="w-full p-5">
+                  <!-- -----theme button -------------  -->
+                  <button
+                    onclick="changeThem()"
+                    class="p-1 flex justify-start bg-gray-200 items-center gap-2 p-3 w-[180px] px-4 rounded-sm hover:bg-gray-200 dark:bg-gray-600 dark:hover:bg-gray-700"
+                  >
+                    <i class="fa-solid fa-circle-half-stroke"></i>
+                    <p>Change</p>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- ------------------ secend-content -------------  -->
+            <div
+              class="hidden rounded-lg bg-gray-50 dark:bg-gray-800"
+              id="dashboard"
+              role="tabpanel"
+              aria-labelledby="dashboard-tab"
+            >
+              <div
+                class="w-full p-2 bg-gray-200 dark:bg-gray-700 flex justify-start gap-3 items-center"
+              >
+                <i class="fa-solid fa-language"></i>
+                <span>Template</span>
+              </div>
+              <div class="w-full p-3">
+                <form class="w-full">
+                  <textarea
+                    required
+                    class="w-full h-[250px] rounded-sm dark:border-gray-700 border-gray-300 p-2 bg-[rgba(0,0,0,0)] outline-0 border"
+                  >
+# New Note {{LLLL}} dfhls
+              </textarea
+                  >
+                  <div class="w-full flex justify-between mt-2">
+                    <span></span>
+                    <input
+                      type="submit"
+                      value="Save"
+                      class="bg-blue-500 cursor-pointer px-5 rounded-sm p-1"
+                    />
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!-- ------------------ third-content -------------  -->
+            <div
+              class="hidden rounded-lg bg-gray-50 dark:bg-gray-800"
+              id="settings"
+              role="tabpanel"
+              aria-labelledby="settings-tab"
+            >
+              <div
+                class="w-full p-2 bg-gray-200 dark:bg-gray-700 flex justify-start gap-3 items-center"
+              >
+                <i class="fa-solid fa-keyboard"></i>
+                <span>Hotkeys</span>
+              </div>
+              <div class="w-full p-3">
+                <div class="w-full grid grid-cols-2">
+                  <!-- ---------- title --------------  -->
+                  <p
+                    class="bg-gray-200 dark:bg-gray-700 text-center w-full p-1 font-bold border border-gray-200 dark:border-gray-600"
+                  >
+                    Action
+                  </p>
+                  <p
+                    class="bg-gray-200 dark:bg-gray-700 text-center w-full p-1 font-bold border border-gray-200 dark:border-gray-600"
+                  >
+                    Hotkey
+                  </p>
+
+                  <!-- --------------- key words -----------------  -->
+                  <p
+                    class="border border-gray-200 dark:border-gray-600 p-1 w-full"
+                  >
+                    Save current note
+                  </p>
+                  <p
+                    class="border border-gray-200 dark:border-gray-600 p-1 w-full"
+                  >
+                    command + s
+                  </p>
+                  <!-- -------- col 2 --------------  -->
+                  <p
+                    class="border border-gray-200 dark:border-gray-600 p-1 w-full"
+                  >
+                    Save current note
+                  </p>
+                  <p
+                    class="border border-gray-200 dark:border-gray-600 p-1 w-full"
+                  >
+                    command + s
+                  </p>
+                  <!-- -------- col 3 --------------  -->
+                  <p
+                    class="border border-gray-200 dark:border-gray-600 p-1 w-full"
+                  >
+                    Save current note
+                  </p>
+                  <p
+                    class="border border-gray-200 dark:border-gray-600 p-1 w-full"
+                  >
+                    command + s
+                  </p>
+                  <!-- -------- col 4 --------------  -->
+                  <p
+                    class="border border-gray-200 dark:border-gray-600 p-1 w-full"
+                  >
+                    Save current note
+                  </p>
+                  <p
+                    class="border border-gray-200 dark:border-gray-600 p-1 w-full"
+                  >
+                    command + s
+                  </p>
+                  <!-- -------- col 5 --------------  -->
+                  <p
+                    class="border border-gray-200 dark:border-gray-600 p-1 w-full"
+                  >
+                    Save current note
+                  </p>
+                  <p
+                    class="border border-gray-200 dark:border-gray-600 p-1 w-full"
+                  >
+                    command + s
+                  </p>
+                  <!-- -------- col 6 --------------  -->
+                  <p
+                    class="border border-gray-200 dark:border-gray-600 p-1 w-full"
+                  >
+                    Save current note
+                  </p>
+                  <p
+                    class="border border-gray-200 dark:border-gray-600 p-1 w-full"
+                  >
+                    command + s
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- ------------------ fourth-content -------------  -->
+            <div
+              class="hidden rounded-lg bg-gray-50 dark:bg-gray-800"
+              id="contacts"
+              role="tabpanel"
+              aria-labelledby="contacts-tab"
+            >
+              <!-- changing email  -->
+              <div class="w-full">
+                <div
+                  class="w-full p-2 bg-gray-200 dark:bg-gray-700 flex justify-start gap-3 items-center"
+                >
+                  <i class="fa-solid fa-envelope"></i>
+                  <span>Change email</span>
+                </div>
+                <div class="w-full p-6">
+                  <!-- ---- change start form here ---------  -->
+                  <form
+                    class="flex flex-col justify-start items-start gap-4 w-full sm:w-[300px] dark:border-gray-700"
+                  >
+                    <div class="w-full relative">
+                      <input
+                        type="text"
+                        class="w-full p-4 border dark:border-white dark:outline-white inputBox bg-[rgba(0,0,0,0)] rounded-md dark:bg-[rgb(17 24 39)] dark:text-white dark:border-gray-400"
+                        required
+                        placeholder="Email Address*"
+                      />
+                      <label
+                        class="absolute top-4 left-4 bg-white dark:bg-gray-800 dark:!border-white px-2 dark:!bg-[rgb(17 24 39)] py-0 -z-10 label dark:text-white"
+                        >Email Address*</label
+                      >
+                    </div>
+                    <div class="w-full mt-2 relative">
+                      <input
+                        type="password"
+                        class="w-full p-4 border inputBox bg-[rgba(0,0,0,0)] dark:border-white dark:outline-white rounded-md dark:bg-[rgb(17 24 39)] dark:text-white dark:border-gray-400"
+                        required
+                        placeholder="Password*"
+                      />
+                      <label
+                        class="absolute top-4 left-4 bg-white dark:bg-gray-800 dark:!border-white px-2 dark:!bg-[rgb(17 24 39)] py-0 -z-10 label dark:text-white"
+                        >Password</label
+                      >
+                    </div>
+
+                    <input
+                      type="submit"
+                      value="Change email"
+                      class="bg-blue-500 cursor-pointer p-2 px-4 rounded-sm mt-2 text-white"
+                    />
+                  </form>
+                </div>
+              </div>
+              <!--  change password  -->
+              <div class="w-full">
+                <div
+                  class="w-full p-2 bg-gray-200 dark:bg-gray-700 flex justify-start gap-3 items-center"
+                >
+                  <i class="fa-solid fa-key"></i>
+                  <span>Change Password</span>
+                </div>
+                <div class="w-full p-6">
+                  <!-- ---- change start form here ---------  -->
+                  <form
+                    class="flex flex-col justify-start items-start gap-4 w-full sm:w-[300px] dark:border-gray-700"
+                  >
+                    <div class="w-full relative">
+                      <input
+                        type="password"
+                        class="w-full p-4 border dark:border-white dark:outline-white inputBox bg-[rgba(0,0,0,0)] rounded-md dark:bg-[rgb(17 24 39)] dark:text-white dark:border-gray-400"
+                        required
+                        placeholder="Current password*"
+                      />
+                      <label
+                        class="absolute top-4 left-4 bg-white dark:bg-gray-800 dark:!border-white px-2 dark:!bg-[rgb(17 24 39)] py-0 -z-10 label dark:text-white"
+                        >Current password</label
+                      >
+                    </div>
+                    <div class="w-full mt-2 relative">
+                      <input
+                        type="password"
+                        class="w-full p-4 border inputBox bg-[rgba(0,0,0,0)] dark:border-white dark:outline-white rounded-md dark:bg-[rgb(17 24 39)] dark:text-white dark:border-gray-400"
+                        required
+                        placeholder="New Password*"
+                      />
+                      <label
+                        class="absolute top-4 left-4 bg-white dark:bg-gray-800 dark:!border-white px-2 dark:!bg-[rgb(17 24 39)] py-0 -z-10 label dark:text-white"
+                        >New password</label
+                      >
+                    </div>
+                    <div class="w-full mt-2 relative">
+                      <input
+                        type="password"
+                        class="w-full p-4 border inputBox bg-[rgba(0,0,0,0)] dark:border-white dark:outline-white rounded-md dark:bg-[rgb(17 24 39)] dark:text-white dark:border-gray-400"
+                        required
+                        placeholder="Confirm Password*"
+                      />
+                      <label
+                        class="absolute top-4 left-4 bg-white dark:bg-gray-800 dark:!border-white px-2 dark:!bg-[rgb(17 24 39)] py-0 -z-10 label dark:text-white"
+                        >Confirm password</label
+                      >
+                    </div>
+                    <input
+                      type="submit"
+                      value="Change password"
+                      class="bg-blue-500 cursor-pointer p-2 px-4 rounded-sm mt-2 text-white"
+                    />
+                  </form>
+                </div>
+              </div>
+              <!-- delete account  -->
+              <div class="w-full">
+                <div
+                  class="w-full p-2 bg-gray-200 dark:bg-gray-700 flex justify-start gap-3 items-center"
+                >
+                  <i class="fa-solid fa-user-xmark"></i>
+                  <span>Delete account</span>
+                </div>
+                <div class="w-full p-6">
+                  <!-- ---- change start form here ---------  -->
+                  <form
+                    class="flex flex-col justify-start items-start gap-4 w-full sm:w-[300px] dark:border-gray-700"
+                  >
+                    <div class="w-full relative">
+                      <input
+                        type="password"
+                        class="w-full p-4 border inputBox bg-[rgba(0,0,0,0)] dark:border-white dark:outline-white rounded-md dark:bg-[rgb(17 24 39)] dark:text-white dark:border-gray-400"
+                        required
+                        placeholder="Password*"
+                      />
+                      <label
+                        class="absolute top-4 left-4 bg-white dark:bg-gray-800 dark:!border-white px-2 dark:!bg-[rgb(17 24 39)] py-0 -z-10 label dark:text-white"
+                        >Password</label
+                      >
+                    </div>
+
+                    <input
+                      type="submit"
+                      value="Delete account"
+                      class="bg-blue-500 cursor-pointer p-2 px-4 rounded-sm mt-2 text-white"
+                    />
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- --------------flowbite css link --------------------- -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
+
+    <!-- -------------------them js functionlity -------------------  -->
+    <script>
+      window.addEventListener("load", () => {
+        setThem();
+      });
+
+      function changeThem() {
+        const them = localStorage.getItem("theme")
+          ? localStorage.getItem("theme")
+          : "light";
+        if (them === "light") {
+          localStorage.setItem("theme", "dark");
+        } else {
+          localStorage.setItem("theme", "light");
+        }
+        setThem();
+      }
+
+      function setThem() {
+        const them = localStorage.getItem("theme")
+          ? localStorage.getItem("theme")
+          : "light";
+        const applyThem = document.querySelector("html");
+        applyThem.setAttribute("class", them);
+      }
+    </script>
+  </body>
+</html>
