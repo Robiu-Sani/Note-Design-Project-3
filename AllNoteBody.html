@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Note Application</title>
+    <!-- --------------- font awesome icon cdn ------------------  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <!-- --------------flowbite css link --------------------- -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css"
+      rel="stylesheet"
+    />
+    <!-- --------------tailwindcss link --------------------- -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- --------------------------- tailwind custom color maker --------------------------- -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+          },
+        },
+        darkMode: "class",
+      };
+    </script>
+    <!-- ---------------- custom css -----------------  -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        transition: 0.3s;
+      }
+      .callPopup:focus ~ .popupBox {
+        width: 120px;
+        height: auto;
+      }
+      .callPopup2:focus ~ .popupBox {
+        width: 180px;
+        height: auto;
+      }
+      .noneScroll::-webkit-scrollbar {
+        display: none !important;
+      }
+      .inputBox:valid {
+        border: 1px solid rgb(70, 70, 70);
+      }
+      .inputBox:focus {
+        outline: 1px;
+      }
+      .inputBox:focus ~ .label,
+      .inputBox:valid ~ .label {
+        transform: translate(0, -25px);
+        font-size: 0.8rem;
+        z-index: 10;
+        border-left: 1px solid rgb(70, 70, 70);
+        border-right: 1px solid rgb(70, 70, 70);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ------------------ ------------------------  -->
+    <div class="w-full min-h-[calc(100vh-55px)] bg-white dark:bg-gray-800">
+      <!-- ------------nav bar ---------------  -->
+      <div
+        class="w-full shadow-md border-b border-gray-200 dark:border-gray-700 fixed top-0 z-[1000] px-1 sm:px-5 p-1 dark:bg-gray-800 bg-gray-50 flex justify-between items-center"
+      >
+        <div class="w-full overflow-x-auto noneScroll">
+          <div class="flex justify-start items-center min-w-[530px] gap-1">
+            <button
+              class="w-[50px] h-[50px] rounded-sm flex justify-center items-center bg-gray-200 dark:bg-[#596987]"
+            >
+              <i class="fa-regular fa-calendar"></i>
+            </button>
+            <!-- --------------- date work is here ---------------  -->
+            <div
+              class="flex h-[50px] callDate justify-center items-center gap-[1px]"
+            >
+              <button
+                id="prev-date"
+                class="w-[50px] h-[50px] rounded-sm flex justify-center items-center bg-gray-200 dark:bg-[#596987]"
+              >
+                <i class="fas fa-arrow-left"></i>
+              </button>
+              <span
+                id="date-display"
+                class="text-lg font-medium max-w-[170px] h-[50px] rounded-sm flex justify-center items-center bg-gray-200 dark:bg-[#596987] px-2"
+              >
+                Tu 07/09/2024
+              </span>
+              <button
+                id="next-date-1"
+                class="w-[50px] h-[50px] rounded-sm flex justify-center items-center bg-gray-200 dark:bg-[#596987]"
+              >
+                <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+            <!-- ------ save button -------------  -->
+            <button
+              class="w-[50px] h-[50px] rounded-sm flex justify-center items-center bg-gray-200 dark:bg-[#596987]"
+            >
+              <i class="fa-solid fa-floppy-disk"></i>
+            </button>
+            <!-- ---------------- list and eye button --------------  -->
+            <div
+              class="w-[100px] rounded-sm overflow-hidden flex justify-center items-center"
+            >
+              <button
+                class="w-[50px] h-[50px] flex justify-center items-center bg-gray-200 dark:bg-[#596987]"
+              >
+                <i class="fa-solid fa-bars"></i>
+              </button>
+              <button
+                class="w-[50px] h-[50px] flex justify-center items-center bg-white dark:bg-[#969ca9]"
+              >
+                <i class="fa-solid fa-eye"></i>
+              </button>
+            </div>
+            <!-- ------- last info icon button ----------------  -->
+            <button
+              id="info-button"
+              class="w-[50px] h-[50px] rounded-sm flex justify-center items-center bg-gray-200 dark:bg-[#596987]"
+            >
+              <i class="fa-solid fa-circle-info"></i>
+            </button>
+          </div>
+        </div>
+        <!-- ----------------- setting button -----------------  -->
+        <div
+          class="flex min-w-[55px] justify-end dark:text-white items-center gap-2"
+        >
+          <button
+            class="min-w-[50px] h-[50px] rounded-sm flex justify-center items-center bg-gray-200 dark:bg-[#596987] sm:w-[60px] relative"
+          >
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+            <input
+              type="button"
+              class="w-full h-full absolute callPopup top-0 cursor-pointer left-0"
+            />
+            <div
+              class="w-[0px] h-[0px] flex flex-col popupBox rounded-md bg-white dark:bg-gray-900 shadow-md absolute top-[55px] right-1 overflow-hidden"
+            >
+              <span
+                class="p-3 w-full hover:bg-[#b3cedb3d] flex justify-start items-center gap-3"
+              >
+                <i class="fa-solid fa-gear"></i>Settings
+              </span>
+              <span
+                class="p-3 w-full hover:bg-[#b3cedb3d] flex justify-start items-center gap-3"
+              >
+                <i class="fa-solid fa-circle-info"></i>Info
+              </span>
+              <span
+                class="p-3 w-full hover:bg-[#b3cedb3d] flex justify-start items-center gap-3"
+              >
+                <i class="fa-solid fa-circle-question"></i>Help
+              </span>
+              <span
+                class="p-3 w-full hover:bg-[#b3cedb3d] flex justify-start items-center gap-3"
+              >
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>Logout
+              </span>
+            </div>
+          </button>
+        </div>
+      </div>
+      <!-- -------------- nav end ----------------  -->
+
+      <div
+        class="w-full relative mt-[55px] max-h-[calc(100vh-65px)] overflow-y-scroll noneScroll bg-white dark:bg-gray-800"
+      >
+        <!-- --------------------------- there is card parent here -----------------  -->
+        <div
+          class="w-full grid grid-cols-1 sm:grid-cols-2 p-5 xl:grid-cols-3 gap-5 2xl:grid-cols-4"
+        >
+          <!-- -----------card ------------------  -->
+          <div
+            class="w-full cursor-pointer bg-white border border-gray-200 dark:border-gray-700 rounded-lg shadow dark:bg-gray-900"
+          >
+            <div
+              class="w-full p-2 text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center"
+            >
+              <i class="fa-regular fa-file-lines"></i>
+              <span>Tue 07/09/2024</span>
+            </div>
+            <div class="w-full p-3">
+              <p class="font-normal text-black dark:text-gray-400">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero
+                nesciunt at totam possimus doloremque ducimus quod blanditiis
+                quibusdam sequi voluptas fuga aspernatur soluta officiis
+                perferendis sint aliquid, ipsam consectetur debitis.
+              </p>
+            </div>
+          </div>
+          <!-- -----------card end------------------  -->
+          <!-- -----------card ------------------  -->
+          <div
+            class="w-full cursor-pointer bg-white border border-gray-200 dark:border-gray-700 rounded-lg shadow dark:bg-gray-900"
+          >
+            <div
+              class="w-full p-2 text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center"
+            >
+              <i class="fa-regular fa-file-lines"></i>
+              <span>Tue 07/09/2024</span>
+            </div>
+            <div class="w-full p-3">
+              <p class="font-normal text-black dark:text-gray-400">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero
+                nesciunt at totam possimus doloremque ducimus quod blanditiis
+                quibusdam sequi voluptas fuga aspernatur soluta officiis
+                perferendis sint aliquid, ipsam consectetur debitis.
+              </p>
+            </div>
+          </div>
+          <!-- -----------card end------------------  -->
+          <!-- -----------card ------------------  -->
+          <div
+            class="w-full cursor-pointer bg-white border border-gray-200 dark:border-gray-700 rounded-lg shadow dark:bg-gray-900"
+          >
+            <div
+              class="w-full p-2 text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center"
+            >
+              <i class="fa-regular fa-file-lines"></i>
+              <span>Tue 07/09/2024</span>
+            </div>
+            <div class="w-full p-3">
+              <p class="font-normal text-black dark:text-gray-400">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero
+                nesciunt at totam possimus doloremque ducimus quod blanditiis
+                quibusdam sequi voluptas fuga aspernatur soluta officiis
+                perferendis sint aliquid, ipsam consectetur debitis.
+              </p>
+            </div>
+          </div>
+          <!-- -----------card end------------------  -->
+        </div>
+      </div>
+      <!-- ------------ Add note Button --------------  -->
+      <div
+        class="w-[60px] h-[60px] absolute bottom-5 right-2 flex justify-center items-center rounded-full cursor-pointer bg-white border border-gray-200 dark:border-gray-700 shadow-md dark:bg-gray-900"
+      >
+        <i class="fa-solid fa-plus text-gray-800 dark:text-white text-2xl"></i>
+      </div>
+    </div>
+
+    <!-- --------------flowbite css link --------------------- -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
+
+    <!-- -------------------date js functionlity -------------------  -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const dateDisplay = document.getElementById("date-display");
+        const prevDateButton = document.getElementById("prev-date");
+        const nextDateButton = document.getElementById("next-date-1");
+
+        // Initialize date to the displayed date
+        let currentDate = new Date(2024, 6, 9); // July 9, 2024 (months are 0-indexed)
+
+        // Function to update the date display
+        function updateDateDisplay() {
+          const options = {
+            weekday: "short",
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+          };
+          dateDisplay.textContent = currentDate
+            .toLocaleDateString("en-US", options)
+            .replace(",", " ");
+        }
+
+        // Event listeners for buttons
+        prevDateButton.addEventListener("click", function () {
+          currentDate.setDate(currentDate.getDate() - 1);
+          updateDateDisplay();
+        });
+
+        nextDateButton.addEventListener("click", function () {
+          currentDate.setDate(currentDate.getDate() + 1);
+          updateDateDisplay();
+        });
+
+        // Initial update of date display
+        updateDateDisplay();
+      });
+    </script>
+  </body>
+</html>
