@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Note Application</title>
+    <!-- --------------- font awesome icon cdn ------------------  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+
+    <!-- --------------flowbite css link --------------------- -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css"
+      rel="stylesheet"
+    />
+    <!-- -
+
+    <!-- --------------tailwindcss link --------------------- -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- --------------------------- tailwind custom color maker --------------------------- -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+          },
+        },
+        darkMode: "class",
+      };
+    </script>
+  </head>
+  <body>
+    <div
+      class="w-full bg-white dark:bg-gray-800 min-h-sereen py-10 flex justify-center items-center gap-8 flex-col p-3 sm:p-5"
+    >
+      <h1
+        class="text-3xl mt-10 sm:text-5xl dark:text-gray-100 text-center font-bold"
+      >
+        No Hidden Charges! Choose Your Plan.
+      </h1>
+      <p class="text-center dark:text-gray-200 max-w-[800px]">
+        No hidden charges! Choose the plan that fits your needs. Enjoy
+        transparent pricing and hassle-free services tailored for you.
+      </p>
+      <div
+        class="w-full flex justify-center items-center gap-8 flex-col sm:flex-row"
+      >
+        <!-- ------------- card 1 -------------------  -->
+        <div
+          class="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700"
+        >
+          <h5 class="mb-4 text-xl font-medium text-gray-500 dark:text-gray-400">
+            Standard plan
+          </h5>
+          <div class="flex items-baseline text-gray-900 dark:text-white">
+            <span class="text-3xl font-semibold">$</span>
+            <span class="text-5xl font-extrabold tracking-tight">49</span>
+            <span
+              class="ms-1 text-xl font-normal text-gray-500 dark:text-gray-400"
+              >/month</span
+            >
+          </div>
+          <ul role="list" class="space-y-5 my-7">
+            <li class="flex items-center">
+              <i
+                class="fa-solid fa-circle-check text-gray-500 dark:text-gray-400"
+              ></i>
+              <span
+                class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 ms-3"
+                >2 team members</span
+              >
+            </li>
+            <li class="flex">
+              <i
+                class="fa-solid fa-circle-check text-gray-500 dark:text-gray-400"
+              ></i>
+              <span
+                class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 ms-3"
+                >20GB Cloud storage</span
+              >
+            </li>
+            <li class="flex">
+              <i
+                class="fa-solid fa-circle-check text-gray-500 dark:text-gray-400"
+              ></i>
+              <span
+                class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 ms-3"
+                >Integration help</span
+              >
+            </li>
+            <li class="flex line-through decoration-gray-500">
+              <i
+                class="fa-solid fa-circle-check text-gray-500 dark:text-gray-400"
+              ></i>
+              <span
+                class="text-base font-normal leading-tight text-gray-500 ms-3"
+                >Sketch Files</span
+              >
+            </li>
+            <li class="flex line-through decoration-gray-500">
+              <i
+                class="fa-solid fa-circle-check text-gray-500 dark:text-gray-400"
+              ></i>
+              <span
+                class="text-base font-normal leading-tight text-gray-500 ms-3"
+                >API Access</span
+              >
+            </li>
+            <li class="flex line-through decoration-gray-500">
+              <i
+                class="fa-solid fa-circle-check text-gray-500 dark:text-gray-400"
+              ></i>
+              <span
+                class="text-base font-normal leading-tight text-gray-500 ms-3"
+                >Complete documentation</span
+              >
+            </li>
+            <li class="flex line-through decoration-gray-500">
+              <i
+                class="fa-solid fa-circle-check text-gray-500 dark:text-gray-400"
+              ></i>
+              <span
+                class="text-base font-normal leading-tight text-gray-500 ms-3"
+                >24×7 phone & email support</span
+              >
+            </li>
+          </ul>
+          <button
+            type="button"
+            class="text-white bg-[rgb(55,65,81)] hover:bg-[rgb(55,75,110)] focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center"
+          >
+            Choose plan
+          </button>
+        </div>
+
+        <!-- ------------- card 2 -------------------  -->
+        <div
+          class="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700"
+        >
+          <h5 class="mb-4 text-xl font-medium text-gray-500 dark:text-gray-400">
+            Standard plan
+          </h5>
+          <div class="flex items-baseline text-gray-900 dark:text-white">
+            <span class="text-3xl font-semibold">$</span>
+            <span class="text-5xl font-extrabold tracking-tight">499</span>
+            <span
+              class="ms-1 text-xl font-normal text-gray-500 dark:text-gray-400"
+              >/year</span
+            >
+          </div>
+          <ul role="list" class="space-y-5 my-7">
+            <li class="flex items-center">
+              <i
+                class="fa-solid fa-circle-check text-gray-500 dark:text-gray-400"
+              ></i>
+              <span
+                class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 ms-3"
+                >2 team members</span
+              >
+            </li>
+            <li class="flex">
+              <i
+                class="fa-solid fa-circle-check text-gray-500 dark:text-gray-400"
+              ></i>
+              <span
+                class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 ms-3"
+                >20GB Cloud storage</span
+              >
+            </li>
+            <li class="flex">
+              <i
+                class="fa-solid fa-circle-check text-gray-500 dark:text-gray-400"
+              ></i>
+              <span
+                class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 ms-3"
+                >Integration help</span
+              >
+            </li>
+            <li class="flex line-through decoration-gray-500">
+              <i
+                class="fa-solid fa-circle-check text-gray-500 dark:text-gray-400"
+              ></i>
+              <span
+                class="text-base font-normal leading-tight text-gray-500 ms-3"
+                >Sketch Files</span
+              >
+            </li>
+            <li class="flex line-through decoration-gray-500">
+              <i
+                class="fa-solid fa-circle-check text-gray-500 dark:text-gray-400"
+              ></i>
+              <span
+                class="text-base font-normal leading-tight text-gray-500 ms-3"
+                >API Access</span
+              >
+            </li>
+            <li class="flex line-through decoration-gray-500">
+              <i
+                class="fa-solid fa-circle-check text-gray-500 dark:text-gray-400"
+              ></i>
+              <span
+                class="text-base font-normal leading-tight text-gray-500 ms-3"
+                >Complete documentation</span
+              >
+            </li>
+            <li class="flex line-through decoration-gray-500">
+              <i
+                class="fa-solid fa-circle-check text-gray-500 dark:text-gray-400"
+              ></i>
+              <span
+                class="text-base font-normal leading-tight text-gray-500 ms-3"
+                >24×7 phone & email support</span
+              >
+            </li>
+          </ul>
+          <button
+            type="button"
+            class="text-white bg-[rgb(55,65,81)] hover:bg-[rgb(55,75,110)] focus:ring-4 focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center"
+          >
+            Choose plan
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
