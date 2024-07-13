@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+          },
+        },
+        darkMode: "class",
+      };
+    </script>
+  </head>
+  <body>
+    <div
+      class="flex items-center dark:bg-gray-800 justify-center p-3 min-h-screen"
+    >
+      <div
+        class="bg-gray-100 border dark:border-gray-600 dark:bg-gray-700 p-5 rounded-lg shadow-lg max-w-[700px]"
+      >
+        <div class="w-full sm:hidden items-center flex flex-col pt-5 gap-5">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg"
+            alt="visa"
+            class="max-w-[250px] mb-5"
+          />
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
+            alt="master card"
+            class="max-w-[250px] mb-5"
+          />
+        </div>
+        <form class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+          <div class="w-full col-span-1 sm:col-span-2">
+            <div class="mb-4">
+              <label
+                class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2"
+                for="card-number"
+                >Card number</label
+              >
+              <div class="relative">
+                <input
+                  class="shadow appearance-none border border-gray-300 dark:border-gray-600 rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 leading-tight focus:outline-none focus:shadow-outline dark:bg-gray-700"
+                  id="card-number"
+                  type="text"
+                  required
+                  placeholder="Card number"
+                />
+                <div class="flex absolute right-3 top-2 space-x-1">
+                  <div class="card-logo visa"></div>
+                  <div class="card-logo mastercard"></div>
+                  <div class="card-logo amex"></div>
+                </div>
+              </div>
+            </div>
+            <div class="flex mb-4">
+              <div class="w-1/2 pr-2">
+                <label
+                  class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2"
+                  for="expiry-date"
+                  >Expiration date</label
+                >
+                <input
+                  class="shadow appearance-none border border-gray-300 dark:border-gray-600 rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 leading-tight focus:outline-none focus:shadow-outline dark:bg-gray-700"
+                  id="expiry-date"
+                  type="text"
+                  required
+                  placeholder="MM"
+                />
+              </div>
+              <div class="w-1/2 pl-2">
+                <label
+                  class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2"
+                  for="expiry-year"
+                  >&nbsp;</label
+                >
+                <input
+                  class="shadow appearance-none border border-gray-300 dark:border-gray-600 rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 leading-tight focus:outline-none focus:shadow-outline dark:bg-gray-700"
+                  id="expiry-year"
+                  type="text"
+                  required
+                  placeholder="YYYY"
+                />
+              </div>
+            </div>
+            <div>
+              <label
+                class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2"
+                for="cardholder-name"
+                >Cardholder name</label
+              >
+              <input
+                class="shadow appearance-none border border-gray-300 dark:border-gray-600 rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 leading-tight focus:outline-none focus:shadow-outline dark:bg-gray-700"
+                id="cardholder-name"
+                type="text"
+                required
+                placeholder="Cardholder name"
+              />
+            </div>
+          </div>
+          <div class="w-full flex flex-col justify-between gap-5 items-center">
+            <div class="w-full hidden sm:flex flex-col pt-5 gap-5">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg"
+                alt="visa"
+                class="sm:h-[70px] w-full"
+              />
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
+                alt="master card"
+                class="sm:h-[60px] w-full"
+              />
+            </div>
+
+            <button
+              class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              type="submit"
+            >
+              Pay Now
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

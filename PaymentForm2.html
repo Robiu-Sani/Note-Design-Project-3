@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment Form</title>
+    <!-- --------------tailwindcss link --------------------- -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind custom color configuration -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+          },
+        },
+        darkMode: "class",
+      };
+    </script>
+  </head>
+  <body class="bg-gray-100 dark:bg-gray-900">
+    <div class="wfull min-h-screen flex justify-center items-center">
+      <div class="max-w-md p-5 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+        <h2
+          class="text-2xl font-bold mb-5 text-center text-gray-900 dark:text-white"
+        >
+          Payment Form
+        </h2>
+        <form>
+          <div class="mb-4">
+            <label
+              class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2"
+              for="name"
+              >Name</label
+            >
+            <input
+              class="shadow appearance-none border border-gray-300 dark:border-gray-600 rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 leading-tight focus:outline-none focus:shadow-outline dark:bg-gray-700"
+              id="name"
+              type="text"
+              placeholder="Full Name"
+            />
+          </div>
+          <div class="mb-4">
+            <label
+              class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2"
+              for="email"
+              >Email</label
+            >
+            <input
+              class="shadow appearance-none border border-gray-300 dark:border-gray-600 rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 leading-tight focus:outline-none focus:shadow-outline dark:bg-gray-700"
+              id="email"
+              type="email"
+              placeholder="Email Address"
+            />
+          </div>
+          <div class="mb-4">
+            <label
+              class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2"
+              for="card-number"
+              >Card Number</label
+            >
+            <input
+              class="shadow appearance-none border border-gray-300 dark:border-gray-600 rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 leading-tight focus:outline-none focus:shadow-outline dark:bg-gray-700"
+              id="card-number"
+              type="text"
+              placeholder="Card Number"
+            />
+          </div>
+          <div class="flex mb-4">
+            <div class="w-1/2 pr-2">
+              <label
+                class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2"
+                for="expiry-date"
+                >Expiry Date</label
+              >
+              <input
+                class="shadow appearance-none border border-gray-300 dark:border-gray-600 rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 leading-tight focus:outline-none focus:shadow-outline dark:bg-gray-700"
+                id="expiry-date"
+                type="text"
+                placeholder="MM/YY"
+              />
+            </div>
+            <div class="w-1/2 pl-2">
+              <label
+                class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2"
+                for="cvc"
+                >CVC</label
+              >
+              <input
+                class="shadow appearance-none border border-gray-300 dark:border-gray-600 rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 leading-tight focus:outline-none focus:shadow-outline dark:bg-gray-700"
+                id="cvc"
+                type="text"
+                placeholder="CVC"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <button
+              class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              type="button"
+            >
+              Pay Now
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
