@@ -239,7 +239,7 @@
                   aria-controls="settings"
                   aria-selected="false"
                 >
-                  Settings
+                  Hotkeys
                 </button>
               </li>
               <li
@@ -255,7 +255,7 @@
                   aria-controls="contacts"
                   aria-selected="false"
                 >
-                  Hotkeys
+                  Settings
                 </button>
               </li>
             </ul>
@@ -624,6 +624,45 @@
         const applyThem = document.querySelector("html");
         applyThem.setAttribute("class", them);
       }
+    </script>
+
+    <!-- -------------------date js functionlity -------------------  -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const dateDisplay = document.getElementById("date-display");
+        const prevDateButton = document.getElementById("prev-date");
+        const nextDateButton = document.getElementById("next-date-1");
+
+        // Initialize date to the displayed date
+        let currentDate = new Date(2024, 6, 9); // July 9, 2024 (months are 0-indexed)
+
+        // Function to update the date display
+        function updateDateDisplay() {
+          const options = {
+            weekday: "short",
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+          };
+          dateDisplay.textContent = currentDate
+            .toLocaleDateString("en-US", options)
+            .replace(",", " ");
+        }
+
+        // Event listeners for buttons
+        prevDateButton.addEventListener("click", function () {
+          currentDate.setDate(currentDate.getDate() - 1);
+          updateDateDisplay();
+        });
+
+        nextDateButton.addEventListener("click", function () {
+          currentDate.setDate(currentDate.getDate() + 1);
+          updateDateDisplay();
+        });
+
+        // Initial update of date display
+        updateDateDisplay();
+      });
     </script>
   </body>
 </html>
